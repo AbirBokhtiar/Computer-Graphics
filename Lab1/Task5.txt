@@ -1,0 +1,384 @@
+#include <windows.h>  // for MS Windows
+#include <GL/glut.h>  // GLUT, include glu.h and gl.h
+
+/* Program entry point */
+
+/* Handler for window-repaint event. Call back when the window first appears and
+whenever the window needs to be re-painted. */
+void task1() {
+	glClearColor(256.0f, 256.0f, 256.0f, 1.0f); // Set background color to black and opaque
+	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	glPointSize(5.0);
+	// Draw a Red 1x1 Square centered at origin
+	glBegin(GL_POINTS);
+	glColor3f(0.0f, 0.0f, 0.0f); // Red
+	glVertex2f(-6.0f, 4.0f);    // x, y
+
+    glColor3f(0.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(5.0f, 4.0f);    // x, y
+
+	glColor3f(0.0f, 0.0f, 0.0f); // Red
+	glVertex2f(-6.0f, -4.0f);    // x, y
+
+    glColor3f(0.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(5.0f,-4.0f);    // x, y
+	glEnd();
+
+    glBegin(GL_LINES);
+	glColor3f(0.0f, 0.0f, 0.0f); // Red
+	glVertex2f(-6.0f, 4.0f);    // x, y
+
+    glColor3f(0.0f, 0.0f, 0.0f); // Red
+	glVertex2f(-6.0f, -4.0f);    // x, y
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 0.0f); // Red
+	glVertex2f(-6.0f, -4.0f);    // x, y
+
+    glColor3f(0.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(5.0f, -4.0f);    // x, y
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(5.0f, -4.0f);    // x, y
+
+	glColor3f(0.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(5.0f, 4.0f);    // x, y
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(5.0f, 4.0f);    // x, y
+
+	glColor3f(0.0f, 0.0f, 0.0f); // Red
+	glVertex2f(-6.0f, 4.0f);    // x, y
+	glEnd();
+
+	glFlush();  // Render now
+}
+
+void task2() {
+	glClearColor(256.0f, 256.0f, 256.0f, 1.0f); // Set background color to black and opaque
+	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	glPointSize(5.0);
+	// Draw a Red 1x1 Square centered at origin
+	glBegin(GL_POLYGON);
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+	glVertex2f(-3.0f, 2.0f);    // x, y
+
+    glColor3f(1.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(-6.0f, -4.0f);    // x, y
+
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+	glVertex2f(5.0f, -4.0f);    // x, y
+
+    glColor3f(1.0f, 0.0f, 0.0f); // Violet
+	glVertex2f(2.0f, 2.0f);    // x, y
+	glEnd();
+
+	glFlush();  // Render now
+}
+
+void drawText(const char* text, float x, float y) {
+    glColor3f(0.0f, 0.0f, 0.0f); // Black color for text
+    glRasterPos2f(x, y); // Set the position for text
+    while (*text) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *text);
+        text++;
+    }
+}
+
+void task3(){
+    glClearColor(256.0f, 256.0f, 256.0f, 1.0f); // Set background color to black and opaque
+	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	drawText("Octagon", -2.5f, 10.0f);    // Draw the text above the octagon
+	glPointSize(5.0);
+
+    glBegin(GL_POLYGON);
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+
+	glVertex2f(-4.0f, -8.0f);    // x, y
+	glVertex2f(4.0f, -8.0f);    // x, y
+
+	glVertex2f(4.0f, -8.0f);    // x, y
+	glVertex2f(8.0f, -4.0f);    // x, y
+
+	glVertex2f(8.0f, -4.0f);    // x, y
+	glVertex2f(8.0f, 4.0f);    // x, y
+
+	glVertex2f(8.0f, 4.0f);    // x, y
+	glVertex2f(4.0f, 8.0f);    // x, y
+
+	glVertex2f(0.4f, 8.0f);    // x, y
+	glVertex2f(-0.4f, 8.0f);    // x, y
+
+	glVertex2f(-4.0f, 8.0f);    // x, y
+	glVertex2f(-8.0f, 4.0f);    // x, y
+
+	glVertex2f(-8.0f, 4.0f);    // x, y
+	glVertex2f(-8.0f, -4.0f);    // x, y
+
+	glVertex2f(-8.0f, -4.0f);    // x, y
+	glVertex2f(-4.0f, -8.0f);    // x, y
+
+    glEnd();
+
+    glLineWidth(5.0f);
+    glBegin(GL_LINE_LOOP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+
+	glVertex2f(-4.0f, -8.0f);    // x, y
+	glVertex2f(4.0f, -8.0f);    // x, y
+
+	glVertex2f(4.0f, -8.0f);    // x, y
+	glVertex2f(8.0f, -4.0f);    // x, y
+
+	glVertex2f(8.0f, -4.0f);    // x, y
+	glVertex2f(8.0f, 4.0f);    // x, y
+
+	glVertex2f(8.0f, 4.0f);    // x, y
+	glVertex2f(4.0f, 8.0f);    // x, y
+
+	glVertex2f(0.4f, 8.0f);    // x, y
+	glVertex2f(-0.4f, 8.0f);    // x, y
+
+	glVertex2f(-4.0f, 8.0f);    // x, y
+	glVertex2f(-8.0f, 4.0f);    // x, y
+
+	glVertex2f(-8.0f, 4.0f);    // x, y
+	glVertex2f(-8.0f, -4.0f);    // x, y
+
+	glVertex2f(-8.0f, -4.0f);    // x, y
+	glVertex2f(-4.0f, -8.0f);    // x, y
+
+	glEnd();
+
+    glFlush();
+}
+
+void task4()
+{
+    glClearColor(256.0f, 256.0f, 256.0f, 1.0f); // Set background color to black and opaque
+	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	glPointSize(5.0);
+
+    glBegin(GL_POLYGON);
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+
+	glVertex2f(-6.0f, 4.0f);    // E
+	glVertex2f(-2.0f, 2.0f);    // D
+
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(1.0f, 0.0f, 0.0f);
+
+	glVertex2f(-2.0f, 2.0f);     // D
+	glVertex2f(-4.0f, -2.0f);    // A
+
+	glVertex2f(-4.0f, -2.0f);    // A
+	glVertex2f(0.0f, 0.0f);    // H
+
+	glVertex2f(0.0f, 0.0f);   // H
+	glVertex2f(4.0f, -2.0f);    // C
+
+	glVertex2f(4.0f, -2.0f);    // C
+	glVertex2f(2.0f, 2.0f);    // F
+
+	glVertex2f(2.0f, 2.0f);    // F
+	glVertex2f(6.0f, 4.0f);    // G
+
+	glVertex2f(6.0f, 4.0f);    // G
+	glVertex2f(1.8f, 4.0f);    // J
+
+	glVertex2f(1.8f, 4.0f);    // J
+	glVertex2f(0.0f, 8.0f);    // B
+
+	glVertex2f(0.0f, 8.0f);    // B
+	glVertex2f(-1.8f, 4.0f);    // I
+
+	glVertex2f(-1.8f, 4.0f);    // I
+	glVertex2f(-6.0f, 4.0f);    // E
+
+	glVertex2f(-6.0f, 4.0f);    // E
+	glVertex2f(-2.0f, 2.0f);    // D
+
+	glEnd();
+
+	glLineWidth(3.0f);
+	glBegin(GL_LINE_LOOP);
+	glColor3f(0.0f, 0.0f, 0.0f);
+
+	glVertex2f(-2.0f, 2.0f);     // D
+	glVertex2f(-4.0f, -2.0f);    // A
+
+	glVertex2f(-4.0f, -2.0f);    // A
+	glVertex2f(0.0f, 0.0f);    // H
+
+	glVertex2f(0.0f, 0.0f);   // H
+	glVertex2f(4.0f, -2.0f);    // C
+
+	glVertex2f(4.0f, -2.0f);    // C
+	glVertex2f(2.0f, 2.0f);    // F
+
+	glVertex2f(2.0f, 2.0f);    // F
+	glVertex2f(6.0f, 4.0f);    // G
+
+	glVertex2f(6.0f, 4.0f);    // G
+	glVertex2f(1.8f, 4.0f);    // J
+
+	glVertex2f(1.8f, 4.0f);    // J
+	glVertex2f(0.0f, 8.0f);    // B
+
+	glVertex2f(0.0f, 8.0f);    // B
+	glVertex2f(-1.8f, 4.0f);    // I
+
+	glVertex2f(-1.8f, 4.0f);    // I
+	glVertex2f(-6.0f, 4.0f);    // E
+	glEnd();
+
+    glFlush();
+}
+
+void task5()
+{
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set background color to black and opaque
+	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	glLineWidth(2.5);
+
+	glBegin(GL_LINES);              // Each set of 4 vertices form a quad
+	glColor3f(0.0f, 0.0f, 0.0f); // Black
+
+	glVertex2f(-9.5f, 0.0f);    // x, y
+	glVertex2f(9.5f, 0.0f);    // x, y
+
+	glVertex2f(0.0f, 9.5f);    // x, y
+	glVertex2f(0.0f, -9.5f);    // x, y
+
+	glEnd();
+
+	glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(1.0f, 0.0f, 0.0f); // Red
+
+	glVertex2f(-5.0, 1.0f);    // x, y
+	glVertex2f(-1.0f, 1.0f);    // x, y
+
+	glVertex2f(-1.0f, 1.0f);    // x, y
+	glVertex2f(-1.0f, 5.0f);    // x, y
+
+    glVertex2f(-1.0f, 5.0f);    // x, y
+	glVertex2f(-5.0f, 5.0f);    // x, y
+
+	glVertex2f(-5.0f, 1.0f);    // x, y
+	glVertex2f(-1.0f, 1.0f);
+
+	glEnd();
+
+	glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(0.5f, 0.0f, 0.5f); // Purple
+
+
+	glVertex2f(-5.0f, -3.0f);    // N
+    glVertex2f(-1.0f, -1.0f);    // L
+
+
+	glVertex2f(-1.0f, -1.0f);    // L
+	glVertex2f(-1.0f, -5.0f);    // M
+
+	glEnd();
+
+    glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(0.5f, 0.0f, 0.5f); // Purple
+
+	glVertex2f(-1.0f, -5.0f);    // M
+	glVertex2f(-5.0f, -0.3f);    // N
+
+	glEnd();
+
+	glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(1.0f, 1.0f, 0.0f); // Yellow
+
+	glVertex2f(0.1f, -0.45f);    // x, y
+	glVertex2f(0.5f, -0.45f);    // x, y
+
+	glVertex2f(0.5f, -0.45f);    // x, y
+	glVertex2f(0.3f, -0.15f);    // x, y
+
+	glVertex2f(0.3f, -0.15f);    // x, y
+    glVertex2f(0.1f, -0.45f);    // x, y
+
+    glEnd();
+
+	//       SQUARE
+	glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(0.0f, 1.0f, 0.0f); // Green
+
+	glVertex2f(1.5f, 2.0f);    // x, y
+	glVertex2f(5.5f, 2.0f);    // x, y
+
+	glVertex2f(5.5f, 2.0f);    // x, y
+	glVertex2f(5.5f, 4.0f);    // x, y
+
+    glVertex2f(5.5f, 4.0f);    // x, y
+	glVertex2f(1.5f, 4.0f);    // x, y
+
+	glVertex2f(1.5f, 4.0f);    // x, y
+	glVertex2f(1.5f, 2.0f);
+
+	glEnd();
+
+    //      TRIANGLE
+	glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(0.0f, 1.0f, 0.0f); // Green
+
+	glVertex2f(5.5f, 1.0f);    // x, y
+	glVertex2f(7.5f, 3.0f);    // x, y
+
+	glVertex2f(7.5f, 3.0f);    // x, y
+	glVertex2f(5.5f, 5.0f);    // x, y
+
+	glVertex2f(5.5f, 5.0f);    // x, y
+    glVertex2f(5.5f, 1.0f);    // x, y
+
+    glEnd();
+
+    glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(1.0f, 1.0f, 0.0f); // Yellow
+
+	glVertex2f(1.0f, -4.5f);    // P
+    glVertex2f(5.0f, -4.5f);    // Q
+
+	glVertex2f(5.0f, -4.5f);    // Q
+	glVertex2f(3.0f, -1.5f);    // O
+
+	glEnd();
+
+	glBegin(GL_POLYGON);              // Each set of 4 vertices form a quad
+	glColor3f(1.0f, 1.0f, 0.0f); // Yellow
+
+	glVertex2f(3.0f, -1.5f);    // O
+	glVertex2f(-1.0f, -4.5f);   // P
+
+	glEnd();
+
+
+	glFlush();  // Render now
+}
+
+
+/* Main function: GLUT runs as a console application starting at main()  */
+int main(int argc, char** argv) {
+	glutInit(&argc, argv);                 // Initialize GLUT
+	glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
+	glutInitWindowSize(320, 320);   // Set the window's initial width & height
+	glutReshapeWindow (720,720);
+	glutDisplayFunc(task5); // Register display callback handler for window re-paint
+	gluOrtho2D(-20,20,-20,20);
+	glutMainLoop();           // Enter the event-processing loop
+	return 0;
+}
+
+
+
